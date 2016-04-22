@@ -1,0 +1,31 @@
+{
+  "env": {
+    "browser": true
+  },
+  "parser": "babel-eslint",
+  "rules": {
+    "strict": [2, "global"],
+
+    "no-eval": 2,
+    "no-useless-call": 2,
+
+    "quotes": [1, "single"],
+    "jsx-quotes": 1,
+
+    "react/jsx-uses-react": 2,
+    "react/jsx-uses-vars": 2,
+    "react/react-in-jsx-scope": 2    
+  },
+  "ecmaFeatures": {
+    "arrowFunctions": true,
+    "blockBindings": true,
+    "classes": true,
+    "jsx": true,
+    "modules": true,
+    "objectLiteralShorthandMethods": true,
+    "superInFunctions": true
+  },
+  "plugins": [
+    "react"
+  ]
+}

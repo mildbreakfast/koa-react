@@ -1,0 +1,8 @@
+'use strict'
+
+module.exports = {
+  'config': './config/config.js',
+  'migrations-path': './server/migrations/',
+  'seeders-path': './server/seeds/',
+  'models-path': './server/models/'
+};

@@ -1,0 +1,22 @@
+{
+  "name": "koa-react",
+  "description": "Koa-React app",
+  "main": "index.js",
+  "authors": [
+    "mildbreakfast"
+  ],
+  "license": "ISC",
+  "moduleType": [
+    "amd",
+    "es6",
+    "globals"
+  ],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
