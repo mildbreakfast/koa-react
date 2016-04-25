@@ -5,6 +5,14 @@
   "parser": "babel-eslint",
   "rules": {
     "strict": [2, "global"],
+    "semi": 2,
+    "arrow-spacing": [1, {"before": true, "after": true}],
+    "no-duplicate-imports": 1,
+    "constructor-super": 1,
+    "prefer-arrow-callback": 1,
+    "prefer-const": 1,
+    "prefer-template": 1,
+    "no-unused-vars": 1,
 
     "no-eval": 2,
     "no-useless-call": 2,
@@ -14,7 +22,6 @@
 
     "react/jsx-uses-react": 2,
     "react/jsx-uses-vars": 2,
-    "react/react-in-jsx-scope": 2    
   },
   "ecmaFeatures": {
     "arrowFunctions": true,

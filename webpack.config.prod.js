@@ -7,15 +7,14 @@ const path = require('path');
 module.exports = {
   cache: true,
   context: process.cwd(),
-  debug: true,
-  devtool: 'source-map',
   entry: {
     'vendor': ['react', 'react-dom'],
-    'app': ['webpack-hot-middleware/client?path=http://localhost:3000','./client/app.js']
+    'app': ['./client/app.js']
   },
   output: {
     filename: '[name].js',
-    path: path.join(__dirname, 'dist')
+    path: path.join(__dirname, 'dist'),
+    publicPath: '/assets/'
   },
   module: {
     preLoaders: [
@@ -44,7 +43,7 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      __DEV__: true
+			'process.env': { NODE_ENV: JSON.stringify('production') }
     }),
     new webpack.optimize.CommonsChunkPlugin({
       name: ['common', 'vendor']
@@ -53,9 +52,8 @@ module.exports = {
       new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin('bower.json', ['main'])
     ),
     new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.OccurrenceOrderPlugin(true),
-    new webpack.optimize.UglifyJsPlugin({ output: { comments: false} }),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
+    new webpack.optimize.OccurenceOrderPlugin(true),
+    new webpack.optimize.UglifyJsPlugin({ output: { comments: false } }),
+    new webpack.NoErrorsPlugin()
   ]
 };
