@@ -52,6 +52,7 @@
     "react-addons-test-utils": "^15.0.1",
     "react-dom": "^15.0.1",
     "react-hot-loader": "^3.0.0-alpha.8",
+    "react-router": "^2.3.0",
     "sass-loader": "^3.2.0",
     "sequelize-cli": "^2.3.1",
     "sinon": "^1.17.3",

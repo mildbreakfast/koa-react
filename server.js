@@ -14,7 +14,7 @@ if(process.env.NODE_ENV != 'production') {
   const webpack = require('webpack');
   const koaDevMiddleware = require('koa-webpack-dev-middleware');
   const koaHotMiddleware = require('koa-webpack-hot-middleware');
-  const config = require('./webpack.config.dev');
+  const config = require('./webpack.config');
   const compiler = webpack(config);
   app.use(koaDevMiddleware(compiler, { noInfo: true, hot: true, historyApiFallback: true, stats: { colors: true }, publicPath: config.output.publicPath }));
   app.use(koaHotMiddleware(compiler, { log: console.log }));

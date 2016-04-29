@@ -4,7 +4,7 @@ const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const path = require('path');
 
-module.exports = {
+const config = {
   cache: true,
   context: process.cwd(),
   entry: {
@@ -42,9 +42,6 @@ module.exports = {
     moduleDirectories: ['node_modules', 'bower_components']
   },
   plugins: [
-    new webpack.DefinePlugin({
-			'process.env': { NODE_ENV: JSON.stringify('production') }
-    }),
     new webpack.optimize.CommonsChunkPlugin({
       name: ['common', 'vendor']
     }),
@@ -53,7 +50,17 @@ module.exports = {
     ),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(true),
-    new webpack.optimize.UglifyJsPlugin({ output: { comments: false } }),
     new webpack.NoErrorsPlugin()
   ]
 };
+
+if(process.env.NODE_ENV === 'production') {
+  config.plugins = [new webpack.DefinePlugin({ 'process.env': { NODE_ENV: JSON.stringify('production') } }), ...config.plugins, new webpack.optimize.UglifyJsPlugin({ output: { comments: false } })];
+} else {
+  config.debug = true;
+  config.devtool = 'source-map';
+  for(let entry in config.entry) entry != 'vendor' && (config.entry[entry] = ['webpack-hot-middleware/client', 'react-hot-loader/patch', ...config.entry[entry]]);
+  config.plugins = [new webpack.DefinePlugin({ 'process.env': { NODE_ENV: JSON.stringify('development') } }), ...config.plugins, new webpack.HotModuleReplacementPlugin()];
+}
+
+module.exports = config;
