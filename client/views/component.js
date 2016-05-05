@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import MotionComponent from './motion';
 
 export default class MyComponent extends Component {
   constructor(props) {
@@ -6,15 +7,16 @@ export default class MyComponent extends Component {
     this.state = { date: new Date().toISOString(), isOn: false };
   }
 
-  toggle = () => this.setState({ isOn: !this.state.isOn });
+  toggle() { this.setState({ isOn: !this.state.isOn }); }
 
   render() {
-    return (<div>Hello World Updated 1234
+    return (<div>Hello World Updated
       <br/>
       { JSON.stringify(this.state) }
       <br/>
-      <button onClick={this.toggle}>Toggle</button>
+      <button onClick={::this.toggle}>Toggle</button>
       {this.props.children}
+      <MotionComponent/>
     </div>);
   }
 };
